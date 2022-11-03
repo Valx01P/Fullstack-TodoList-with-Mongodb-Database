@@ -1,4 +1,4 @@
-const list = require('../model/list');
+const Listdb = require('../models/list');
 
 // create and save new user
 exports.create = (req,res)=>{

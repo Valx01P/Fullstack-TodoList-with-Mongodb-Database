@@ -3,7 +3,7 @@ const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
-const List = require("./models/list")
+const Listdb = require("./models/list")
 const connectDB = require("./config/dbConn")
 const date = require(__dirname + "/date.js")
 const PORT = 3000
@@ -17,35 +17,24 @@ app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
+//home route
 app.get("/", (request, response) => {
     const day = date.getDate();
 
-    List.find()
+    Listdb.find()
     .then(result => {
         response.render("index", { data: result, listTitle: day })
-        console.log(result)
-    })
+        })
 })
 
-//getting list data to MongoDB
-
-app.post("/", (request, response) => {
-	const list = new List({
-		list: request.body.inputValue
-	})
-	list.save()
-	.then(result => {
-		response.redirect("/")
-	})
+//about route
+app.get("/about", (request, response) => {
+    response.render("about")
 })
 
-//deleting list data from MongoDB
-
-app.delete("/:id", (request, response) => {
-    List.findByIdAndDelete(request.params.id)
-    .then(result => {
-        console.log(result)
-    })
+//contact route
+app.get("/contact", (request, response) => {
+    response.render("contact")
 })
 
 mongoose.connection.once("open", () => {

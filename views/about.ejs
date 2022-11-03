@@ -21,12 +21,8 @@
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/f2be266c31.js" crossorigin="anonymous"></script>
 
-  <!-- Popper Scripts -->
-  <script src="https://unpkg.com/@popperjs/core@2"></script>
-
   <!-- Bootstrap Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-
 </head>
 
 <body>
@@ -55,82 +51,24 @@
         </div>
       </nav>
 
-      <!-- Date -->
+      <!-- About -->
 
-      <div class="date" id="date-heading">
-        <h1> <%= listTitle %> </h1>
-      </div>
-
-      <!-- List -->
-      <div class="wrapper list">
-        <div class="task-input">
-        <form class="submit-form" action="/" method="post" autocomplete="off">
-            <i class="fa-solid fa-pencil"></i>
-            <input class="input-one" type="text" placeholder="Add a new task" name="inputValue" required>
-            <button class="submit-button" type="submit">Add</button>
-        </form>
+        <div class="about">
+            <h1>About</h1>
+            <h2>Hey there👋, want to know why I made this project? Well I made this 
+                project to help develop my skills in Node, Express, MongoDB, and EJS
+                (and also to help with homework management)...
+                If you have any advice to give or wanna
+                give me a compliment on this project you can 
+                do that on the contact page, thanks!</h2>
+                <h3>This project was inspired by the CodingNepal's todolist
+                    and is a complete front-end redesign with a back-end database
+                    and completed with total server side file handling
+                </h3>
         </div>
-        <div class="controls">
-          <div class="filters">
-            <span class="active" id="all">All</span>
-            <span id="pending">Pending</span>
-            <span id="completed">Completed</span>
-          </div>
-          <button class="clear-btn">Clear All</button>
-        </div>
-    
-        <!-- repeated for every piece of list data -->
 
-        <div class="list-container">
-          <tr>
-            <div class="task-box list-value">
-             <input type="checkbox">
-             <h3 class="inputh3">Smoke weed</h3>
-            </div>
-            <td>
-            <a class="list-edit">
-              <span class="text-gradient"><i class="fa-solid fa-pen-to-square crud edit"></i></span>
-            </a>
-            <a class="list-delete">
-              <span class="text-gradient"><i class="fa-solid fa-trash-can crud delete"></i></span>
-            </a>
-            </td>
-          </tr>
-        </div>
-<!--        
-        <div class="list-container">
-            <div class="task-box list-value">
-             <td>fuck some hoes</td>
-            </div>
-            <td>
-            <a class="list-edit">
-              <span class="text-gradient"><i class="fa-solid fa-pen-to-square crud edit"></i></span>
-            </a>
-            <a class="list-delete">
-              <span class="text-gradient"><i class="fa-solid fa-trash-can crud delete"></i></span>
-            </a>
-            </td>
-        </div> -->
-
-      </div>
-
-      <!-- dropdown menu -->
-
-      <!-- </div> -->
-    <!-- <script>
-      const deleteButton = document.querySelectorAll(".list-delete")
-
-      deleteButton.forEach((button, i) => {
-          button.addEventListener("click", () => {
-              const endPoint = `/${button.classList[1]}`
-              fetch(endPoint, {
-                  method: "DELETE"
-              })
-              window.location.href = "/"
-          })
-      })
-    </script> -->
-
+        <img src="images/computers.png" alt="computer" class="computer-image">
+        <img src="images/gearimage.png" alt="gear" class="gear-image">
       
      <!-- Footer -->
      <footer id="footer">
@@ -142,24 +80,12 @@
           <i class="social-icon fa-brands fa-instagram"></i>
           <i class="social-icon fa-solid fa-envelope"></i>
           <p class="copyright">© Copyright 2022 Tyrone<sup>®</sup>LLC</p>
-                   
-<!-- Default dropleft button -->
-<!-- <div class="btn-group dropleft">
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropleft
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>  
-  </div>
-</div> -->
-
   
         </div>
      </footer>
     <!-- </div> -->
-  
+  <script src="script.js"></script>
+
 </body>
 
 </html>

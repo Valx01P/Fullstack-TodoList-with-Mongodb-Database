@@ -8,7 +8,7 @@ const listSchema = new Schema({
 		}
 	})
 
-const list = mongoose.model("List", listSchema)
-module.exports = list
+const Listdb = mongoose.model("listdb", listSchema)
+module.exports = Listdb
 
 //or you could write it as module.exports = mongoose.model("List", listSchema)
