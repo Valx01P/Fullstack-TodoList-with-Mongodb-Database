@@ -58,11 +58,10 @@
       <!-- Date -->
 
       <div class="date" id="date-heading">
-        <h1> Sunday, October 30th </h1>
+        <h1> <%= listTitle %> </h1>
       </div>
 
       <!-- List -->
-    <!-- <div class="big-div"> -->
       <div class="wrapper list">
         <div class="task-input">
         <form class="submit-form" action="/" method="post" autocomplete="off">
@@ -79,14 +78,40 @@
           </div>
           <button class="clear-btn">Clear All</button>
         </div>
-        <% if(data) { %>
-          <% data.forEach(listValue => { %>
-          <div class="list-container">
-            <ul class="task-box list-value"><%= listValue.list %></ul>
-            <a class="list-delete <%= listValue %>">delete</a>
-          </div>
-          <% }) %>
-        <% } %>
+    
+        <!-- repeated for every piece of list data -->
+
+        <div class="list-container">
+          <tr>
+            <div class="task-box list-value">
+             <input type="checkbox">
+             <h3 class="inputh3">Smoke weed</h3>
+            </div>
+            <td>
+            <a class="list-edit">
+              <span class="text-gradient"><i class="fa-solid fa-pen-to-square crud edit"></i></span>
+            </a>
+            <a class="list-delete">
+              <span class="text-gradient"><i class="fa-solid fa-trash-can crud delete"></i></span>
+            </a>
+            </td>
+          </tr>
+        </div>
+<!--        
+        <div class="list-container">
+            <div class="task-box list-value">
+             <td>fuck some hoes</td>
+            </div>
+            <td>
+            <a class="list-edit">
+              <span class="text-gradient"><i class="fa-solid fa-pen-to-square crud edit"></i></span>
+            </a>
+            <a class="list-delete">
+              <span class="text-gradient"><i class="fa-solid fa-trash-can crud delete"></i></span>
+            </a>
+            </td>
+        </div> -->
+
       </div>
 
       <!-- dropdown menu -->
@@ -119,7 +144,7 @@
           <p class="copyright">© Copyright 2022 Tyrone<sup>®</sup>LLC</p>
                    
 <!-- Default dropleft button -->
-<div class="btn-group dropleft">
+<!-- <div class="btn-group dropleft">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropleft
   </button>
@@ -128,7 +153,7 @@
     <a class="dropdown-item" href="#">Another action</a>
     <a class="dropdown-item" href="#">Something else here</a>  
   </div>
-</div>
+</div> -->
 
   
         </div>

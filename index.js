@@ -5,6 +5,7 @@ const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const List = require("./models/list")
 const connectDB = require("./config/dbConn")
+const date = require(__dirname + "/date.js")
 const PORT = 3000
 
 // Connect to MongoDB
@@ -17,9 +18,11 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
 app.get("/", (request, response) => {
+    const day = date.getDate();
+
     List.find()
     .then(result => {
-        response.render("index", { data: result })
+        response.render("index", { data: result, listTitle: day })
         console.log(result)
     })
 })
