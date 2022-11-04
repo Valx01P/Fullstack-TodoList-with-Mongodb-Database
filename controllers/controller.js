@@ -1,4 +1,6 @@
 const Listdb = require('../models/list');
+//crud functions
+//api
 
 // create and save new listitem
 exports.create = (req,res)=>{
@@ -13,12 +15,12 @@ exports.create = (req,res)=>{
         note : req.body.note //accessing from list.js
     })
 
-    // save listitem in the database
+    // saves listitem in the database
     listitem
         .save(listitem)
         .then(data => {
-            res.send(data)
-            // res.redirect('/add-user');
+            // res.send(data)
+            res.redirect('/');
         }) //to find any errors vvv
         .catch(err =>{
             res.status(500).send({
@@ -46,7 +48,7 @@ exports.find = (req, res)=>{
                 res.status(500).send({ message: "Error retrieving listitem with id " + id})
             })
 
-    }else{  //returns all list values
+    }else{  //returns all list values if no id value is specified
         Listdb.find()
             .then(listitem => {
                 res.send(listitem)

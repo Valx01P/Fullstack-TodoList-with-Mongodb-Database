@@ -8,77 +8,16 @@
         <h1> <%= listTitle %> </h1>
       </div>
 
-      <!-- List -->
-      <div class="wrapper list">
-        <div class="task-input">
-        <form class="submit-form" action="/api/ListDB" method="post" autocomplete="off" id="add_listitem">
-            <i class="fa-solid fa-pencil"></i>
-            <input class="input-one" type="text" placeholder="Add a new task" name="inputValue" required>
-            <button class="submit-button" type="submit">Add</button>
-        </form>
-        </div>
-        <div class="controls">
-          <div class="filters">
-            <span class="active" id="all">All</span>
-            <span id="pending">Pending</span>
-            <span id="completed">Completed</span>
-          </div>
-          <button class="clear-btn">Clear All</button>
-        </div>
+      <!-- list form, for data collection -->
+
+      <%- include('listform') %>
+
     
-        <!-- repeated for every piece of list data -->
+      <!-- listitems, repeated for every piece of list data -->
 
-        <div class="list-container">
-          <tr>
-            <div class="task-box list-value">
-             <input type="checkbox">
-             <h3 class="inputh3">Smoke weed</h3>
-            </div>
-            <td>
-            <a class="list-edit">
-              <span class="text-gradient"><i class="fa-solid fa-pen-to-square crud edit"></i></span>
-            </a>
-            <a class="list-delete">
-              <span class="text-gradient"><i class="fa-solid fa-trash-can crud delete"></i></span>
-            </a>
-            </td>
-          </tr>
-        </div>
-<!--        
-        <div class="list-container">
-            <div class="task-box list-value">
-             <td>fuck some hoes</td>
-            </div>
-            <td>
-            <a class="list-edit">
-              <span class="text-gradient"><i class="fa-solid fa-pen-to-square crud edit"></i></span>
-            </a>
-            <a class="list-delete">
-              <span class="text-gradient"><i class="fa-solid fa-trash-can crud delete"></i></span>
-            </a>
-            </td>
-        </div> -->
-
-      </div>
-
-      <!-- dropdown menu -->
-
-      <!-- </div> -->
-    <!-- <script>
-      const deleteButton = document.querySelectorAll(".list-delete")
-
-      deleteButton.forEach((button, i) => {
-          button.addEventListener("click", () => {
-              const endPoint = `/${button.classList[1]}`
-              fetch(endPoint, {
-                  method: "DELETE"
-              })
-              window.location.href = "/"
-          })
-      })
-    </script> -->
+      <%- include('listdata') %>
 
             
-    <!-- include footer -->
-    <%- include('footer') %>
-    <!-- /include footer -->
+      <!-- include footer -->
+      <%- include('footer') %>
+      <!-- /include footer -->

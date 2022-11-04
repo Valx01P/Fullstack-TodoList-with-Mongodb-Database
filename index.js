@@ -7,6 +7,7 @@ const Listdb = require("./models/list")
 const connectDB = require("./config/dbConn")
 const date = require(__dirname + "/date.js")
 const controller = require("./controllers/controller")
+const axios = require("axios") //allows us to make our get request to our api
 const PORT = 3000
 
 // Connect to MongoDB
@@ -20,14 +21,23 @@ app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
-//home route
-app.get("/", (request, response) => {
-    const day = date.getDate();
 
-    Listdb.find()
-    .then(result => {
-        response.render("index", { data: result, listTitle: day })
-        })
+//------------------------------------------------------------------------------
+//you can put the routes in a router if you like
+//home route
+app.get("/", (req, res) => {
+    axios.get("http://localhost:3000/api/ListDB")
+    .then(function(response){
+
+        //get data
+        const day = date.getDate();
+
+                 //gives the frontend access to these variables passed below  //listTitle will be the variable that contains the day
+            res.render("index", { lists: response.data, listTitle: day })     //lists will be the variable that contains the response.data
+    }) //catch any errors
+    .catch(err =>{
+        res.send(err);
+    })
 })
 
 //about route
@@ -45,6 +55,8 @@ app.post('/api/ListDB', controller.create);
 app.get('/api/ListDB', controller.find);
 app.put('/api/ListDB/:id', controller.update);
 app.delete('/api/ListDB/:id', controller.delete);
+//------------------------------------------------------------------------------
+
 
 //connections
 mongoose.connection.once("open", () => {

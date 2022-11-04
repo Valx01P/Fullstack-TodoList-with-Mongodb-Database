@@ -1,0 +1,17 @@
+<div class="wrapper list"> <!--div starts on list form, ends on list data-->
+
+    <div class="task-input"> <!--send the list data to our api using the submit form with the POST method so it sends it to our database-->
+    <form class="submit-form" action="/api/ListDB" method="post" autocomplete="off" id="add_listitem">
+        <i class="fa-solid fa-pencil"></i> <!--specify the api url in action so our post request gets handled through our api-->
+        <input class="input-one" type="text" placeholder="Add a new task" name="inputValue" required>
+        <button class="submit-button" type="submit">Add</button>
+    </form>
+    </div>
+    <div class="controls">
+      <div class="filters">
+        <span class="active" id="all">All</span>
+        <span id="pending">Pending</span>
+        <span id="completed">Completed</span>
+      </div>
+      <button class="clear-btn">Clear All</button>
+    </div>
