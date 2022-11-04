@@ -1,6 +1,6 @@
 const Listdb = require('../models/list');
 
-// create and save new user
+// create and save new listitem
 exports.create = (req,res)=>{
     // validate request
     if(!req.body){
@@ -8,18 +8,18 @@ exports.create = (req,res)=>{
         return;
     }
 
-    // new user
-    const listitem = new list({
-        list : req.body.list,
+    // new listitem, new instance of database schema
+    const listitem = new Listdb({
+        note : req.body.note //accessing from list.js
     })
 
-    // save user in the database
+    // save listitem in the database
     listitem
         .save(listitem)
         .then(data => {
-            //res.send(data)
-            res.redirect('/add-user');
-        })
+            res.send(data)
+            // res.redirect('/add-user');
+        }) //to find any errors vvv
         .catch(err =>{
             res.status(500).send({
                 message : err.message || "Some error occurred while creating a create operation"
@@ -28,38 +28,38 @@ exports.create = (req,res)=>{
 
 }
 
-// retrieve and return all users/ retrive and return a single user
+// retrieve and return all listitems/ retrieve and return a single listitem
 exports.find = (req, res)=>{
 
-    if(req.query.id){
+    if(req.query.id){  //returns specific list value if id is specified
         const id = req.query.id;
 
-        list.findById(id)
+        Listdb.findById(id)
             .then(data =>{
                 if(!data){
-                    res.status(404).send({ message : "Not found user with id "+ id})
+                    res.status(404).send({ message : "Could not find listitem with id "+ id})
                 }else{
                     res.send(data)
                 }
             })
             .catch(err =>{
-                res.status(500).send({ message: "Erro retrieving user with id " + id})
+                res.status(500).send({ message: "Error retrieving listitem with id " + id})
             })
 
-    }else{
-        list.find()
-            .then(user => {
-                res.send(user)
+    }else{  //returns all list values
+        Listdb.find()
+            .then(listitem => {
+                res.send(listitem)
             })
             .catch(err => {
-                res.status(500).send({ message : err.message || "Error Occurred while retriving user information" })
+                res.status(500).send({ message : err.message || "Error Occurred while retriving listitem information" })
             })
     }
 
     
 }
 
-// Update a new idetified user by user id
+// Update a new idetified listitem by listitem id
 exports.update = (req, res)=>{
     if(!req.body){
         return res
@@ -68,36 +68,36 @@ exports.update = (req, res)=>{
     }
 
     const id = req.params.id;
-    list.findByIdAndUpdate(id, req.body, { useFindAndModify: false})
+    Listdb.findByIdAndUpdate(id, req.body, { useFindAndModify: false})
         .then(data => {
             if(!data){
-                res.status(404).send({ message : `Cannot Update user with ${id}. Maybe user not found!`})
+                res.status(404).send({ message : `Cannot Update listitem with ${id}. Maybe listitem not found!`})
             }else{
                 res.send(data)
             }
         })
         .catch(err =>{
-            res.status(500).send({ message : "Error Update user information"})
+            res.status(500).send({ message : "Error Update listitem information"})
         })
 }
 
-// Delete a user with specified user id in the request
+// Delete a listitem with specified listitem id in the request
 exports.delete = (req, res)=>{
     const id = req.params.id;
 
-    list.findByIdAndDelete(id)
+    Listdb.findByIdAndDelete(id)
         .then(data => {
             if(!data){
                 res.status(404).send({ message : `Cannot Delete with id ${id}. Maybe id is wrong`})
             }else{
                 res.send({
-                    message : "User was deleted successfully!"
+                    message : "listitem was deleted successfully!"
                 })
             }
         })
         .catch(err =>{
             res.status(500).send({
-                message: "Could not delete User with id=" + id
+                message: "Could not delete listitem with id=" + id
             });
         });
 }
