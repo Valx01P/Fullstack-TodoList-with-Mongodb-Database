@@ -3,7 +3,8 @@
     <div class="task-input"> <!--send the list data to our api using the submit form with the POST method so it sends it to our database-->
     <form class="submit-form" action="/api/ListDB" method="post" autocomplete="off" id="add_listitem">
         <i class="fa-solid fa-pencil"></i> <!--specify the api url in action so our post request gets handled through our api-->
-        <input class="input-one" type="text" placeholder="Add a new task" name="inputValue" required>
+        <input type="hidden" name="id" value="">
+        <input class="input-one" type="text" name="note" value="" placeholder="Add a new task" required> <!--use name attr to extract the data (key)-->
         <button class="submit-button" type="submit">Add</button>
     </form>
     </div>

@@ -12,7 +12,7 @@ exports.create = (req,res)=>{
 
     // new listitem, new instance of database schema
     const listitem = new Listdb({
-        note : req.body.note //accessing from list.js
+        note : req.body.note //accessing from listform.ejs from a NAME with the VALUE of NOTE
     })
 
     // saves listitem in the database
@@ -34,7 +34,7 @@ exports.create = (req,res)=>{
 exports.find = (req, res)=>{
 
     if(req.query.id){  //returns specific list value if id is specified
-        const id = req.query.id;
+        const id = req.query.id; //accessing from listform.ejs from a NAME with the VALUE of ID
 
         Listdb.findById(id)
             .then(data =>{

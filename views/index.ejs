@@ -15,8 +15,36 @@
     
       <!-- listitems, repeated for every piece of list data -->
 
-      <%- include('listdata') %>
+      <% for(var i = 0; i < listitems.length; i++) { %>
+        <!-- loops through every list value based on the list length -->
+        <div class="list-container">
+            <tr>
+              <div class="task-box list-value">
+               <input type="checkbox">
+               <h3 class="inputh3"><%= listitems[i].note %></h3> <!-- displays the value for the note key from the database -->
+              </div>
+              <td>
+              <!-- <a class="list-edit"> -->
+                <span class="dropdown text-gradient">
+                  <a data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  <i class="fa-solid fa-pen-to-square crud edit"></i></a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/update?id=<%= listitems[i]._id %>">Edit Task</a>  <!-- USE THE HREF TO DETERMINE WHICH ITEM TO UPDATE -->
+                  </div>
+                </span>  
+              <!-- </a> -->
 
+              <a class="list-delete">
+                <span class="text-gradient">
+                  <i class="fa-solid fa-trash-can crud delete"></i>
+                </span>
+              </a>
+              </td>
+            </tr>
+        </div>
+        <% } %>
+        <!-- ends the loop function -->
+        
+        </div> <!--div starts on list form, ends on list data-->
             
       <!-- include footer -->
       <%- include('footer') %>

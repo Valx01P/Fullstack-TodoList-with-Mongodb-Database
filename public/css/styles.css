@@ -289,6 +289,15 @@ input:checked+h3 {
     display: flex;
 }
 
+/* edit form */
+
+.edit-form {
+  margin-top: 20rem;
+  margin-bottom: 20rem;
+  margin-left: 10rem;
+  margin-right: 3rem;
+}
+
 /* Media */
 
   @media (max-width: 1028px) {
@@ -298,7 +307,7 @@ input:checked+h3 {
     }
   }
 
-  
+
   @media (max-width: 400px) {
     body{
       padding: 0 10px;
@@ -322,5 +331,14 @@ input:checked+h3 {
     }
     .task label input{
       margin-top: 4px;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .computer-image{
+      opacity: 0;
+    }
+    .gear-image{
+      opacity: 0;
     }
   }

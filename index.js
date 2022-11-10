@@ -23,17 +23,33 @@ app.use(bodyParser.json())
 
 
 //------------------------------------------------------------------------------
-//you can put the routes in a router if you like
+//you can put the routes in a router if you like, I'm not for this project
 //home route
 app.get("/", (req, res) => {
     axios.get("http://localhost:3000/api/ListDB")
     .then(function(response){
 
-        //get data
+        //get id list data
+        const listdata = axios.get("http://localhost:3000/api/ListDB", { params : { id : req.query.id }})
+
+        //get date data
         const day = date.getDate();
 
                  //gives the frontend access to these variables passed below  //listTitle will be the variable that contains the day
-            res.render("index", { lists: response.data, listTitle: day })     //lists will be the variable that contains the response.data
+            res.render("index", { listitems: response.data, listTitle: day, listitem: listdata.data })     //lists will be the variable that contains the response.data
+    }) //catch any errors
+    .catch(err =>{
+        res.send(err);
+    })
+})
+
+//update route
+app.get("/update", (req, res) => {
+    axios.get("http://localhost:3000/api/ListDB", { params : { id : req.query.id }})
+    .then(function(listdata){
+
+                 //gives the frontend access to these variables passed below  //listTitle will be the variable that contains the day
+            res.render("update", {listitem: listdata.data })     //lists will be the variable that contains the response.data
     }) //catch any errors
     .catch(err =>{
         res.send(err);
