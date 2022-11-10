@@ -4,7 +4,7 @@
 
 
       <div class="task-input edit-form"> <!--send the list data to our api using the submit form with the POST method so it sends it to our database-->
-        <form class="submit-form" method="post" autocomplete="off" id="update_listitem">
+        <form class="submit-form" method="post" autocomplete="off" id="update">
             <i class="fa-solid fa-pencil"></i> <!--specify the api url in action so our post request gets handled through our api-->
             <input type="hidden" name="id" value="<%= listitem._id %>">
             <input class="input-one" type="text" name="note" value="<%= listitem.note %>" placeholder="Edit Task" required> <!--use name attr to extract the data (key)-->
@@ -12,3 +12,7 @@
         </form>
 
 <p>Yes, I'm currently trying to learn better methods to edit content more efficently</p>
+
+      <!-- include endfooter -->
+      <%- include('endfooter') %>
+      <!-- /include endfooter -->

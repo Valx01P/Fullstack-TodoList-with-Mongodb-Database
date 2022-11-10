@@ -48,8 +48,10 @@ app.get("/update", (req, res) => {
     axios.get("http://localhost:3000/api/ListDB", { params : { id : req.query.id }})
     .then(function(listdata){
 
+        const response = axios.get("http://localhost:3000/api/ListDB")
+
                  //gives the frontend access to these variables passed below  //listTitle will be the variable that contains the day
-            res.render("update", {listitem: listdata.data })     //lists will be the variable that contains the response.data
+            res.render("update", {listitem: listdata.data, listitems: response.data })     //lists will be the variable that contains the response.data
     }) //catch any errors
     .catch(err =>{
         res.send(err);
