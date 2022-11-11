@@ -84,9 +84,7 @@ exports.update = (req, res)=>{
 }
 
 // Delete a listitem with specified listitem id in the request
-exports.delete = (req, res)=>{
-    
-    if(req.params.id){  //delete specific list value if id is specified
+exports.delete = (req, res)=>{//delete specific list value if id is specified
         const id = req.params.id; //accessing from listform.ejs from a NAME with the VALUE of ID
 
         Listdb.findByIdAndDelete(id)
@@ -105,14 +103,34 @@ exports.delete = (req, res)=>{
             });
         });
 
-    }else{  //delete all list values if no id value is specified
+    // }else{  //delete all list values if no id value is specified
+        // Listdb.deleteMany()
+        // .then(data => {
+        //     if(!data){
+        //         res.status(404).send({ message : `Could not clear listdata`})
+        //     }else{
+        //         res.send({
+        //             message : "List has been successfully cleared"
+        //         })
+        //     }
+        // })
+        //     .catch(err =>{
+        //         res.status(500).send({
+        //             message : "Error could not delete"
+        //         })
+        //     })
+    }
+
+
+exports.deleteAll = (req, res)=>{ //delete every list item
+//delete all list values when no id value is specified
         Listdb.deleteMany()
         .then(data => {
             if(!data){
                 res.status(404).send({ message : `Could not clear listdata`})
             }else{
                 res.send({
-                    message : "List has been successfully cleared"
+                    message : "ALL list data has been successfully cleared"
                 })
             }
         })
@@ -122,4 +140,3 @@ exports.delete = (req, res)=>{
                 })
             })
     }
-}

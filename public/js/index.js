@@ -45,12 +45,11 @@ if(window.location.pathname == "/"){
             "method" : "DELETE"
         }
 
-        if(confirm("Do you really want to delete this?")){
+        // if(confirm("Do you really want to delete this?")){
             $.ajax(request).done(function(response){
-                alert("Data Deleted Successfully!");
+                // alert("Data Deleted Successfully!");
                 location.reload();
             })
-        }
 
     })
 }
@@ -59,16 +58,15 @@ if(window.location.pathname == "/"){
 if(window.location.pathname == "/"){
     $ondeleteall = $(".delete-all-data");
     $ondeleteall.click(function(){
-       var id = $(this).attr("value")
 
        var request = {                                        //with no specified id, everything will be deleted
-            "url" : `http://localhost:3000/api/ListDB/${id}`, //passing the request along to our delete method
+            "url" : `http://localhost:3000/api/ListDB`, //passing the request along to our deleteAll method
             "method" : "DELETE"
         }
 
         if(confirm("Do you really want to delete everything?")){
             $.ajax(request).done(function(response){
-                alert("Data Deleted Successfully!");
+                alert("All Data Deleted Successfully!");
                 location.reload();
             })
         }

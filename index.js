@@ -73,6 +73,7 @@ app.post('/api/ListDB', controller.create);
 app.get('/api/ListDB', controller.find);
 app.put('/api/ListDB/:id', controller.update);
 app.delete('/api/ListDB/:id', controller.delete);
+app.delete('/api/ListDB', controller.deleteAll); //extra delete route for deleting all list data
 //------------------------------------------------------------------------------
 
 
