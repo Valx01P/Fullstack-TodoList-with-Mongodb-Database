@@ -22,7 +22,7 @@ $("#update").submit(function(event){
 
 })
 
-//Delete //not working--
+//Delete //prior attempt that is was not working--
 // const deleteButton = document.querySelectorAll(".delete")
 
 // deleteButton.forEach((button, i)=>{
@@ -36,12 +36,12 @@ $("#update").submit(function(event){
 
 // Delete ListDB data based on user click
 if(window.location.pathname == "/"){
-    $ondelete = $(".list-container tr a.delete");
-    $ondelete.click(function(){
+    $ondelete = $(".delete"); //HERE WE ARE FINDING THE ELEMENT WITH THE CLASS DELETE AND SAVING IT AS $ONDELETE TO USE LATER
+    $ondelete.click(function(){ //HERE WE ARE ACCESSING THE ELEMENT W/ CLASS DELETE AND SAVING IT'S ATTR "DATA-ID" AS A VALUE IN THE ID VAR
         var id = $(this).attr("data-id")
 
         var request = {
-            "url" : `http://localhost:3000/api/ListDB/${id}`,
+            "url" : `http://localhost:3000/api/ListDB/${id}`, //passing the request along to our delete method
             "method" : "DELETE"
         }
 
@@ -54,6 +54,27 @@ if(window.location.pathname == "/"){
 
     })
 }
+
+// Delete ALL ListDB data based on user click
+// if(window.location.pathname == "/"){
+//     $ondeleteall = $(".delete-all-data");
+//     $ondeleteall.click(function(){
+//         var id = $(this).attr("data-id")
+
+//         var request = {
+//             "url" : `http://localhost:3000/api/ListDB/${id}`, //passing the request along to our delete method
+//             "method" : "DELETE"
+//         }
+
+//         if(confirm("Do you really want to delete this record?")){
+//             $.ajax(request).done(function(response){
+//                 alert("Data Deleted Successfully!");
+//                 location.reload();
+//             })
+//         }
+
+//     })
+// }
 
 //redirect user after submitting editted data
 document.getElementById("edit-button").onclick = () => {
