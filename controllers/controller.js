@@ -85,9 +85,11 @@ exports.update = (req, res)=>{
 
 // Delete a listitem with specified listitem id in the request
 exports.delete = (req, res)=>{
-    const id = req.params.id;
+    
+    if(req.params.id){  //delete specific list value if id is specified
+        const id = req.params.id; //accessing from listform.ejs from a NAME with the VALUE of ID
 
-    Listdb.findByIdAndDelete(id)
+        Listdb.findByIdAndDelete(id)
         .then(data => {
             if(!data){
                 res.status(404).send({ message : `Cannot Delete with id ${id}. Maybe id is wrong`})
@@ -102,4 +104,22 @@ exports.delete = (req, res)=>{
                 message: "Could not delete listitem with id=" + id
             });
         });
+
+    }else{  //delete all list values if no id value is specified
+        Listdb.deleteMany()
+        .then(data => {
+            if(!data){
+                res.status(404).send({ message : `Could not clear listdata`})
+            }else{
+                res.send({
+                    message : "List has been successfully cleared"
+                })
+            }
+        })
+            .catch(err =>{
+                res.status(500).send({
+                    message : "Error could not delete"
+                })
+            })
+    }
 }
