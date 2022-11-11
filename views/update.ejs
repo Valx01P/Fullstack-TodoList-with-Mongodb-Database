@@ -8,7 +8,7 @@
             <i class="fa-solid fa-pencil"></i> <!--specify the api url in action so our post request gets handled through our api-->
             <input type="hidden" name="id" value="<%= listitem._id %>">
             <input class="input-one" type="text" name="note" value="<%= listitem.note %>" placeholder="Edit Task" required> <!--use name attr to extract the data (key)-->
-            <button class="submit-button" type="submit">Edit</button>
+            <button id="edit-button" class="submit-button" type="submit">Edit</button>
         </form>
 
 <p>Yes, I'm currently trying to learn better methods to edit content more efficently</p>
