@@ -7,6 +7,8 @@ $("#pending").click(function(){
         $("#all").addClass("unclicked");
         $("#completed").removeClass("clicked");
         $("#completed").addClass("unclicked");
+        $(".checked-list-item").remove();
+
     });
 
 $("#completed").click(function(){
@@ -16,6 +18,7 @@ $("#completed").click(function(){
         $("#all").addClass("unclicked");
         $("#pending").removeClass("clicked");
         $("#pending").addClass("unclicked");
+        $(".unchecked-list-item").remove();
     });
 
 $("#all").click(function(){
@@ -40,13 +43,21 @@ $("#all").click(function(){
 //     }
 // });
 
-//check and unchecked list items category buttons
-$(".checkboxx").change(function(){
-    if($(this).is(":checked")) {
-        $(this).addClass("checked");
+//checked and unchecked list items category buttons       DYNAMIC CHECK/UNCHECK SYSTEM BASED ON ID
+$onclick = $(".checkboxx") //targeting the checkbox       AS TO NOT TARGET EVERY CLASS LIST-CONTAINER &
+$onclick.change(function(){ //when changed                INSTEAD JUST INDIVIDUAL CLASS LIST-CONTAINERS
+    var listId = $(this).attr("list-item-id") //storing the unique id of that specifically clicked checkbox using (this)
+                                              //getting said id from the attribute property added to the checkbox which contains the unique id
+    if($(this).is(":checked")) { //again using this to specify that specifically clicked checkbox
+        $(`.${listId}`).addClass("checked-list-item"); //adding a class (checked/unchecked) to the container associated with the checkbox
+        $(`.${listId}`).removeClass("unchecked-list-item"); //by giving the container the same unique id as a class and then targeting it
+                                                            //using said unique id
     } else {
-        $(this).removeClass("checked");
+        
+        $(`.${listId}`).removeClass("checked-list-item");
+        $(`.${listId}`).addClass("unchecked-list-item");
     }
+
 });
 
 //option button on/off  *scrapped idea code

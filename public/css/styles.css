@@ -314,18 +314,80 @@ body {
 }
 
 /* testing */
-.checked {
+/* .checked-list-item {
   margin-left: 5rem;
-}
-
-.option {
- color: #3C87FF;
-}
+} */
 
 input:checked+h3 {
   text-decoration: line-through;
   text-decoration-color: #441f5f;
 }
+
+@keyframes pulsate {
+  100% {
+    /* Larger blur radius */
+    text-shadow:
+      0 0 4px #36efe0,
+      0 0 11px #36efe0,
+      0 0 19px #36efe0,
+      0 0 40px #36efe0,
+      0 0 80px #36efe0,
+      0 0 90px #36efe0,
+      0 0 100px #36efe0,
+      0 0 150px #36efe0;
+  }
+  0% {
+    /* Smaller blur radius */
+    text-shadow:
+      0 0 2px #30c944,
+      0 0 4px #30c944,
+      0 0 6px #30c944,
+      0 0 10px #36efe0,
+      0 0 45px #36efe0,
+      0 0 55px #36efe0,
+      0 0 70px #36efe0,
+      0 0 80px #36efe0;
+  }
+}
+
+.clicked {
+ /* color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+    @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #594dff, 0 0 40px #4dbeff, 0 0 50px #4de1ff, 0 0 60px #4dfff6, 0 0 70px #4dffde, 0 0 80px #ff4da6;
+    } */
+    
+    animation: pulsate 2.5s infinite alternate;     
+
+    /* text-shadow:
+    0 0 7px #7f37b2,
+    0 0 10px #7f37b2,
+    0 0 21px #7f37b2,
+    0 0 42px #441f5f,
+    0 0 82px #441f5f,
+    0 0 92px #441f5f,
+    0 0 102px #441f5f,
+    0 0 151px #441f5f; */
+
+    /* box-shadow: 
+    0 0 .2rem #fff,
+    0 0 .2rem #fff,
+    0 0 2rem #bc13fe,
+    0 0 0.8rem #bc13fe,
+    0 0 2.8rem #bc13fe,
+    inset 0 0 1.3rem #bc13fe; */
+    
+  }
+
 
 /* Media */
 

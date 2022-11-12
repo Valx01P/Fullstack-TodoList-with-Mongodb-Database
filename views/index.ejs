@@ -13,14 +13,14 @@
       <%- include('listform') %>
 
     
-      <!-- listitems, repeated for every piece of list data -->
+      <!-- listitems, repeated for every piece of list data, this also means we can't add single id values -->
 
       <% for(var i = 0; i < listitems.length; i++) { %>
         <!-- loops through every list value based on the list length -->
-        <div class="list-container">
+        <div class="list-container unchecked-list-item <%= listitems[i]._id %>" > <!--class for each checked item to target it-->
             <tr>
               <div class="task-box list-value">
-               <input type="checkbox" class="checkboxx">
+               <input type="checkbox" class="checkboxx" list-item-id="<%= listitems[i]._id %>" > <!--id for each checked item-->
                <h3 class="inputh3"><%= listitems[i].note %></h3> <!-- displays the value for the note key from the database -->
               </div>
               <td>
@@ -32,7 +32,7 @@
                   </div>
                 </span>  
               <!-- </a> -->
-              <a class="delete" data-id=<%= listitems[i]._id %> > <!--id to delete data-->
+              <a class="delete" data-id="<%= listitems[i]._id %>" > <!--id to delete data-->
                 <span class="text-gradient">
                   <i class="fa-solid fa-trash-can crud delete-icon"></i>
                 </span>
