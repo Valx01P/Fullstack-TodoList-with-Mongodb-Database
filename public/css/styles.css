@@ -272,7 +272,7 @@ input:checked+h3 {
   #footer {
     margin-top: 15rem;
     background: linear-gradient(to top, #441f5f 0%, #130d23 100%);
-    padding: 2% 15% 2%;
+    padding: 2% 15% 3%;
     text-align: center;
   }
   
@@ -323,6 +323,12 @@ input:checked+h3 {
   
     #title {
       text-align: center;
+    }
+
+    #footer {
+    margin-top: 15rem;
+    padding: 2% 15% 3%;
+    text-align: center;
     }
   }
 
