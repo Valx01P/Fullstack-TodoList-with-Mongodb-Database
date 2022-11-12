@@ -84,6 +84,44 @@ $onclick.change(function(){ //when changed                INSTEAD JUST INDIVIDUA
 //     }
 // });
 
+//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+
+//attempt of trying to save checked box data in local storage
+// let boxes = document.getElementsByClassName('checkboxx').length;
+// function save() {	
+//     for(let x = 1; x <= boxes; x++){
+// 	var checkbox = document.getElementById(String(x));
+//     localStorage.setItem(String(x), checkbox.checked);	
+//   }
+// }
+//for loading
+// var checked = JSON.parse(localStorage.getItem(String(x)));
+//     document.getElementById(String(x)).checked = checked;
+
+
+// save checkbox state in local storage; FINALLY WORKING, horrah!! :)
+
+let boxes = document.getElementsByClassName('checkboxx').length;
+
+function save() {	
+  for(let x = 1; x <= boxes; x++){
+	  var checkbox = document.getElementById(String(x));
+    localStorage.setItem(String(x), checkbox.checked);	
+  }
+}
+
+//for loading
+for(let x = 1; x <= boxes; x++){
+  if(localStorage.length > 0){
+    var checked = JSON.parse(localStorage.getItem(String(x)));
+    document.getElementById(String(x)).checked = checked;
+  }
+}
+window.addEventListener('change', save);
+
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 //Revise ListDB data based on user inPUT
 $("#update").submit(function(event){
     event.preventDefault();
@@ -164,29 +202,3 @@ if(window.location.pathname == "/"){
 document.getElementById("edit-button").onclick = () => {
     window.location.href = "/";
 }
-
-
-//misc. code ideas for adding features vvv
-
-// $('#checkboxx').click(function() {
-//     if (this.checked) {
-//         $(this).addClass('selected');
-//     } else {
-//         $(this).removeClass('selected');
-//     }
-// });
-
-
-
-
-
-// function check() {
-//     if(document.getElementsByClassName("checkbox").checked = true) {
-//         $(".checkbox").classList.add("checked")
-//     }
-
-// }
-
-// function uncheck() {
-//     document.getElementsByClassName("checkbox").checked = false;
-// }
