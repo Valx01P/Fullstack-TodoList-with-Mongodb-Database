@@ -1,3 +1,44 @@
+//on/off
+$("#all").click(function(){
+    if($("#all").hasClass("unclicked")) {
+        $("#all").addClass("clicked");
+        $("#all").removeClass("unclicked");
+    } else {
+        $("#all").removeClass("clicked");
+        $("#all").addClass("unclicked");
+    }
+});
+
+//check and unchecked list items category buttons
+$(".checkboxx").change(function(){
+    if($(this).is(":checked")) {
+        $(this).addClass("checked");
+    } else {
+        $(this).removeClass("checked");
+    }
+});
+
+//option button on/off
+// document.addEventListener('click', function handleClick(event) {
+//     event.target.classList.add('bg-yellow');
+//   });
+
+// $(".option").addEventListener('click', function handleClick(event) {
+//     if($(this).is(":clicked")) {
+//         $(this).addClass("checked");
+//     } else {
+//         $(this).removeClass("checked");
+//     }
+//   });
+
+// .click(function(){
+//     if($(this).is(":clicked")) {
+//         $(this).addClass("checked");
+//     } else {
+//         $(this).removeClass("checked");
+//     }
+// });
+
 //Revise ListDB data based on user inPUT
 $("#update").submit(function(event){
     event.preventDefault();
@@ -78,3 +119,29 @@ if(window.location.pathname == "/"){
 document.getElementById("edit-button").onclick = () => {
     window.location.href = "/";
 }
+
+
+//misc vvv
+
+// $('#checkboxx').click(function() {
+//     if (this.checked) {
+//         $(this).addClass('selected');
+//     } else {
+//         $(this).removeClass('selected');
+//     }
+// });
+
+
+
+
+
+// function check() {
+//     if(document.getElementsByClassName("checkbox").checked = true) {
+//         $(".checkbox").classList.add("checked")
+//     }
+
+// }
+
+// function uncheck() {
+//     document.getElementsByClassName("checkbox").checked = false;
+// }
