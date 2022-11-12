@@ -1,13 +1,44 @@
-//on/off
-$("#all").click(function(){
-    if($("#all").hasClass("unclicked")) {
-        $("#all").addClass("clicked");
-        $("#all").removeClass("unclicked");
-    } else {
+//on/off/ switching; yes there are better ways to write this, "W.E.T." I know, 
+//but figuring it out will take me longer than copy and pasting my own code lmao
+$("#pending").click(function(){
+        $("#pending").addClass("clicked");
+        $("#pending").removeClass("unclicked");
         $("#all").removeClass("clicked");
         $("#all").addClass("unclicked");
-    }
-});
+        $("#completed").removeClass("clicked");
+        $("#completed").addClass("unclicked");
+    });
+
+$("#completed").click(function(){
+        $("#completed").addClass("clicked");
+        $("#completed").removeClass("unclicked");
+        $("#all").removeClass("clicked");
+        $("#all").addClass("unclicked");
+        $("#pending").removeClass("clicked");
+        $("#pending").addClass("unclicked");
+    });
+
+$("#all").click(function(){
+        $("#all").addClass("clicked");
+        $("#all").removeClass("unclicked");
+        $("#pending").removeClass("clicked");
+        $("#pending").addClass("unclicked");
+        $("#completed").removeClass("clicked");
+        $("#completed").addClass("unclicked");
+    });
+
+//on/off code ex.
+// $("#pending").click(function(){
+//     if($("#pending"&&"#completed").hasClass("unclicked")) {
+//         $("#all").addClass("clicked");
+//         $("#all").removeClass("unclicked");
+//         $("#pending").removeClass("clicked");
+//         $("#completed").removeClass("clicked");
+//     } else {
+//         $("#all").removeClass("clicked");
+//         $("#all").addClass("unclicked");
+//     }
+// });
 
 //check and unchecked list items category buttons
 $(".checkboxx").change(function(){
@@ -18,7 +49,7 @@ $(".checkboxx").change(function(){
     }
 });
 
-//option button on/off
+//option button on/off  *scrapped idea code
 // document.addEventListener('click', function handleClick(event) {
 //     event.target.classList.add('bg-yellow');
 //   });
@@ -63,7 +94,7 @@ $("#update").submit(function(event){
 
 })
 
-//Delete //prior attempt that is was not working--
+//Delete //prior attempt that was not working--
 // const deleteButton = document.querySelectorAll(".delete")
 
 // deleteButton.forEach((button, i)=>{
@@ -121,7 +152,7 @@ document.getElementById("edit-button").onclick = () => {
 }
 
 
-//misc vvv
+//misc. code ideas for adding features vvv
 
 // $('#checkboxx').click(function() {
 //     if (this.checked) {
