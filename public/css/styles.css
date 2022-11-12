@@ -318,6 +318,10 @@ body {
   margin-left: 5rem;
 } */
 
+.checkboxx {
+  accent-color: #812bbf;
+}
+
 input:checked+h3 {
   text-decoration: line-through;
   text-decoration-color: #441f5f;

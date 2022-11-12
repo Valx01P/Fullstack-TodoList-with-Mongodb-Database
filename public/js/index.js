@@ -7,8 +7,8 @@ $("#pending").click(function(){
         $("#all").addClass("unclicked");
         $("#completed").removeClass("clicked");
         $("#completed").addClass("unclicked");
-        $(".checked-list-item").remove();
-
+        $(".checked-list-item").hide();
+        $(".unchecked-list-item").show();
     });
 
 $("#completed").click(function(){
@@ -18,7 +18,8 @@ $("#completed").click(function(){
         $("#all").addClass("unclicked");
         $("#pending").removeClass("clicked");
         $("#pending").addClass("unclicked");
-        $(".unchecked-list-item").remove();
+        $(".unchecked-list-item").hide();
+        $(".checked-list-item").show();
     });
 
 $("#all").click(function(){
@@ -28,6 +29,8 @@ $("#all").click(function(){
         $("#pending").addClass("unclicked");
         $("#completed").removeClass("clicked");
         $("#completed").addClass("unclicked");
+        $(".checked-list-item").show();
+        $(".unchecked-list-item").show();
     });
 
 //on/off code ex.
