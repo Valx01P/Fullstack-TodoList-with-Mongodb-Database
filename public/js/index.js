@@ -1,4 +1,5 @@
 const checkk = $(".checkboxx")
+const boxes = document.getElementsByClassName('checkboxx').length;
 
 //on/off/ switching; yes there are better ways to write this, "W.E.T." I know, 
 //but figuring it out will take me longer than copy and pasting my own code
@@ -45,8 +46,6 @@ $onclick.change(function(){ //when changed                INSTEAD JUST INDIVIDUA
 });
 
 // save checkbox state in local storage; FINALLY WORKING, horrah!! :)
-var boxes = document.getElementsByClassName('checkboxx').length;
-
 function save() {	
   for(let x = 1; x <= boxes; x++){
 	  var checkbox = document.getElementById(String(x));
@@ -62,7 +61,23 @@ for(let x = 1; x <= boxes; x++){
   }
 }
 
+//   for(let x = 1; x <= boxes; x++){
+//     let checkbox = document.getElementById(String(x));
+//     checkbox.forEach(checkbox => {
+ 
+//     });
+//   }
+// }
+
 window.addEventListener('change', save);
+
+// check if checked is true/false
+for(let x = 1; x <= boxes; x++)
+if($(`#${x}`).prop('checked')) {
+    $(`.${x}`).show();
+} else {
+    $(`.${x}`).hide();
+}
 
 //Revise ListDB data based on user inPUT
 $("#update").submit(function(event){
