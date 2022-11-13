@@ -17,11 +17,12 @@
 
       <% for(var i = 0; i < listitems.length; i++) { %>
         <% var n = i + 1 %> <!-- seperate value that starts at 1, necessary for unique checkbox id-->
+        <% var y = i + 1 %> <!-- seperate value that starts at 1, necessary for unique list-container id-->
         <!-- loops through every list value based on the list length -->
-        <div class="list-container unchecked-list-item <%= listitems[i]._id %>" > <!--class for each checked item to target it-->
+        <div class="list-container unchecked-list-item <%= listitems[i]._id %> <%= y %>" data-id-one="<%= y %>"> <!--class for each checked item to target it-->
             <tr>
               <div class="task-box list-value">
-               <input type="checkbox" class="checkboxx" list-item-id="<%= listitems[i]._id %>" id=<%= n %> > <!--id for each checked item-->
+               <input type="checkbox" class="checkboxx" list-item-data="<%= listitems[i]._id %>" id=<%= n %> > <!--id for each checked item-->
                <h3 class="inputh3"><%= listitems[i].note %></h3> <!-- displays the value for the note key from the database -->
               </div>
               <td>
