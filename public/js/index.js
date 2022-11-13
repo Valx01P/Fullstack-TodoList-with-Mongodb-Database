@@ -1,35 +1,9 @@
 const checkk = $(".checkboxx")
 const boxes = document.getElementsByClassName('checkboxx').length;
 
-//on/off/ switching; yes there are better ways to write this, "W.E.T." I know, 
-//but figuring it out will take me longer than copy and pasting my own code
-$("#pending").click(function(){
-        $("#pending").addClass("clicked").removeClass("unclicked");
-        $("#all").addClass("unclicked").removeClass("clicked");
-        $("#completed").addClass("unclicked").removeClass("clicked");
-        $(".checked-list-item").hide();
-        $(".unchecked-list-item").show();
-    });
-
-$("#completed").click(function(){
-        $("#completed").addClass("clicked").removeClass("unclicked");
-        $("#all").addClass("unclicked").removeClass("clicked");
-        $("#pending").addClass("unclicked").removeClass("clicked");
-        $(".unchecked-list-item").hide();
-        $(".checked-list-item").show();
-    });
-
-$("#all").click(function(){
-        $("#all").addClass("clicked").removeClass("unclicked");
-        $("#pending").addClass("unclicked").removeClass("clicked");
-        $("#completed").addClass("unclicked").removeClass("clicked");
-        $(".checked-list-item").show();
-        $(".unchecked-list-item").show();
-    });
-
 
 //checked and unchecked list items category buttons       DYNAMIC CHECK/UNCHECK SYSTEM BASED ON ID
-$onclick = checkk //targeting the checkbox       AS TO NOT TARGET EVERY CLASS LIST-CONTAINER &
+$onclick = checkk //targeting the checkbox                AS TO NOT TARGET EVERY CLASS LIST-CONTAINER &
 $onclick.change(function(){ //when changed                INSTEAD JUST INDIVIDUAL CLASS LIST-CONTAINERS
     var listId = $(this).attr("list-item-data") //storing the unique id of that specifically clicked checkbox using (this)
                                               //getting said id from the attribute property added to the checkbox which contains the unique id
@@ -44,6 +18,8 @@ $onclick.change(function(){ //when changed                INSTEAD JUST INDIVIDUA
     }
 
 });
+
+
 
 // save checkbox state in local storage; FINALLY WORKING, horrah!! :)
 function save() {	
@@ -61,23 +37,49 @@ for(let x = 1; x <= boxes; x++){
   }
 }
 
-//   for(let x = 1; x <= boxes; x++){
-//     let checkbox = document.getElementById(String(x));
-//     checkbox.forEach(checkbox => {
- 
-//     });
-//   }
-// }
-
 window.addEventListener('change', save);
 
-// check if checked is true/false
-for(let x = 1; x <= boxes; x++)
-if($(`#${x}`).prop('checked')) {
-    $(`.${x}`).show();
-} else {
-    $(`.${x}`).hide();
-}
+
+
+//on/off/ switching; yes there are better ways to write this, "W.E.T." I know, 
+//but figuring it out will take me longer than copy and pasting my own code
+$("#pending").click(function(){
+    $("#pending").addClass("clicked").removeClass("unclicked");
+    $("#all").addClass("unclicked").removeClass("clicked");
+    $("#completed").addClass("unclicked").removeClass("clicked");
+    for(let x = 1; x <= boxes; x++)
+    if($(`#${x}`).prop('checked')) {       //check true/false value and show/hide based on the value
+        $(`.${x}`).hide();
+    } else {
+        $(`.${x}`).show();
+    }    
+    // $(".checked-list-item").hide();     I am not going to use these expressions simply as such
+    // $(".unchecked-list-item").show();   as they do not function after reload
+});
+
+$("#completed").click(function(){
+    $("#completed").addClass("clicked").removeClass("unclicked");
+    $("#all").addClass("unclicked").removeClass("clicked");
+    $("#pending").addClass("unclicked").removeClass("clicked");
+    for(let x = 1; x <= boxes; x++)
+    if($(`#${x}`).prop('checked')) {
+        $(`.${x}`).show();
+    } else {
+        $(`.${x}`).hide();
+    }        
+    // $(".unchecked-list-item").hide();
+    // $(".checked-list-item").show();
+});
+
+$("#all").click(function(){
+    $("#all").addClass("clicked").removeClass("unclicked");
+    $("#pending").addClass("unclicked").removeClass("clicked");
+    $("#completed").addClass("unclicked").removeClass("clicked");
+    $(".checked-list-item").show();
+    $(".unchecked-list-item").show();
+});
+
+
 
 //Revise ListDB data based on user inPUT
 $("#update").submit(function(event){
@@ -148,7 +150,20 @@ document.getElementById("edit-button").onclick = () => {
     window.location.href = "/";
 }
 
-//Failed code
+
+//code ideas- just some ideas I made while trying to make functional features
+
+//CHECK IF CHECKED IS TRUE/FALSE AND SHOW/HIDE THOSE ELEMENTS ASSOSCIATED WITH IT BASED ON THIS BOOLEAN EXPRESSION
+//CHECKBOX VALUES BEING CHECKED ARE THE ONES THAT WERE STORED IN LOCAL STORAGE AS SUCH WE USE THIS EXPRESSION AFTER
+//WE'VE SAVED THEIR BOOLEAN VALUE OF BEING - CHECKED/UNCHECKED ; TRUE/FALSE - WHICH WE DID IN THE FUNCTION ABOVE
+// for(let x = 1; x <= boxes; x++)
+// if($(`#${x}`).prop('checked')) {
+//     $(`.${x}`).show();
+// } else {
+//     $(`.${x}`).hide();
+// }
+
+//failed code- this...did not work, a lesson on what not to do, good practice though
 
 //on/off code ex.
 // $("#pending").click(function(){
